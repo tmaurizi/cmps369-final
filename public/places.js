@@ -1,7 +1,7 @@
 var map;
 
 const set_view = async (lat, lng) => {
-    scrollTo(0, 75);
+    scrollTo(0, 65);
     map.flyTo([lat, lng], 13);
     await loadMap();
     await loadPlaces();
