@@ -5,6 +5,8 @@ block content
 		.header
 			h1 Edit Contact
 		a.button.rightalign.link(href='/') Back
+		if (message)
+				p.errormsg #{message}
 		form(action='/'+contactId+'/edit',method='post')
 			fieldset
 				legend Basic Info
@@ -85,5 +87,3 @@ block content
 						input(type='checkbox',checked=false,name='cmail')
 					span Contact by mail
 			button(type='submit') Save
-			if (message)
-				p #{message}

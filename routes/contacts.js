@@ -38,11 +38,12 @@ router.post('/create', async (req, res) => {
 
     const tempaddress = street + " " + city + " " + state + " " + zip + " " + country;
     var result;
-    if (tempaddress) {
+    if (tempaddress.length>4) {
         result = await geocoder.geocode(tempaddress);
     }
     else {
         res.render('create', { message: 'Invalid address' });
+        return;
     }
     var lat, lng, address;
     if (result.length > 0) {
@@ -56,11 +57,20 @@ router.post('/create', async (req, res) => {
         return;
     }
 
-    if (!fname && !lname) {
-        res.redirect('/');
+    if (!fname || !lname) {
+        res.render('create', { message: 'Need to enter full name' });
         return;
     }
-    
+    if (!phone) {
+        res.render('create', { message: 'Need to enter phone number' });
+        return;
+    }
+    if (!email) {
+        res.render('create', { message: 'Need to enter email address' });
+        return;
+    }
+
+
     const nameExist = await req.db.findContactByName(fname, lname);
         if (nameExist) {
             res.render('create', { message: 'Person has already been added' });
@@ -127,11 +137,12 @@ router.post('/:contactId/edit', async (req, res) => {
 
     const tempaddress = street + " " + city + " " + state + " " + zip + " " + country;
     var result;
-    if (tempaddress) {
+    if (tempaddress.length>4) {
         result = await geocoder.geocode(tempaddress);
     }
     else {
         res.render('edit', { contact: contact, contactId: contact.contactId, street: street, city: city, state: state, zip: zip, country: country, message: 'Invalid address' });
+        return;
     }
     var lat, lng, address;
     if (result.length > 0) {
@@ -142,6 +153,19 @@ router.post('/:contactId/edit', async (req, res) => {
     }
     else {
         res.render('edit', { contact: contact, contactId: contact.contactId, street: street, city: city, state: state, zip: zip, country: country, message: 'Invalid address' });
+        return;
+    }
+
+    if (!fname || !lname) {
+        res.render('edit', { contact: contact, contactId: contact.contactId, street: street, city: city, state: state, zip: zip, country: country, message: 'Need to enter full name' });
+        return;
+    }
+    if (!phone) {
+        res.render('edit', { contact: contact, contactId: contact.contactId, street: street, city: city, state: state, zip: zip, country: country, message: 'Need to enter phone number' });
+        return;
+    }
+    if (!email) {
+        res.render('edit', { contact: contact, contactId: contact.contactId, street: street, city: city, state: state, zip: zip, country: country, message: 'Need to enter email address' });
         return;
     }
 

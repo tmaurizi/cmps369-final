@@ -6,6 +6,8 @@ block content
 			h1 Create Contact
 		.rightalign
 			a.button.link(href='/') Back
+		if (message)
+				p.errormsg #{message}
 		form(action='/create',method='post')
 			fieldset
 				legend Basic Info
@@ -57,5 +59,3 @@ block content
 					input(type='checkbox',name='cmail')
 					span Contact by mail
 			button(type='submit') Add
-			if (message)
-				p #{message}
