@@ -1,0 +1,15 @@
+doctype html
+html
+	link(rel="stylesheet", href="/contactStyle.css")
+	head
+		title P2 Contacts
+	body
+		if !hide_login
+			if user
+				span #{user.fname} #{user.lname} 
+				a.button.link(href='/signout') Sign out
+			else
+				a.button.link(href='/login') Sign in
+		br
+		br
+		block content

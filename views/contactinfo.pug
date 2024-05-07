@@ -1,0 +1,42 @@
+extends layout.pug
+
+block content
+	.header
+		h1 Contact Info:
+		h2 #{contact.fname} #{contact.lname}
+	.rightalign
+		a.button.link(href='/') Back
+	.box
+		p
+			.info
+				span Phone number: 
+			span #{contact.phone}
+			section
+				.blue
+					i May 
+					if !contact.contact_by_phone
+						i NOT 
+					i be contacted by phone or text
+		hr
+		p
+			.info
+				span Email Address: 
+			span #{contact.email}
+			section
+				.blue
+					i May 
+					if !contact.contact_by_email
+						i NOT 
+					i be contacted by email
+		hr
+		p
+			.info
+				span Address: 
+			span #{contact.address}
+			section
+				.blue
+					i May 
+					if !contact.contact_by_mail
+						i NOT 
+					i be contacted by mail
+		

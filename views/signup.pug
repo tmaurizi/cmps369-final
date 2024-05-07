@@ -1,0 +1,26 @@
+extends layout.pug
+
+block content
+	h1 Sign Up
+	form(action='/signup', method='post')
+		if message
+			.loud
+				p #{message}
+		.box
+			label(for='fname') First Name
+			input(type='text',name='fname')
+			label(for='lname') Last Name
+			input(type='text',name='lname')
+			hr
+			label(for='username') Username
+			input(type='text',name='username')
+			label(for='password') Password
+			input(type='password',name='password')
+			label(for='password2') Confirm Password
+			input(type='password',name='password2')
+			hr
+			button(type='submit') Sign up
+			a.link(href='/') Nevermind
+		p
+			span Already have an account? 
+			a.link(href='/login') Sign in here!

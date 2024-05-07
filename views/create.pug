@@ -1,0 +1,62 @@
+extends layout.pug
+
+block content
+	.header
+		h1 Create Contact
+	.rightalign
+		a.button.link(href='/') Back
+	form(action='/create',method='post')
+		fieldset
+			legend Basic Info
+			section
+				label(for='fname') First Name:
+				input(type='text',name='fname')
+			section
+				label(for='lname') Last Name:
+				input(type='text',name='lname')
+			section
+				label(for='title') Title:
+				select(id='title', name='title')
+					option(value='Mr.') Mr.
+					option(value='Mrs.') Mrs.
+					option(value='Ms.') Ms.
+					option(value='Dr.') Dr.
+			section
+				label(for='phone') Phone:
+				input(type='text',name='phone')
+			section
+				label(for='email') Email:
+				input(type='text',name='email')
+		fieldset
+			legend Address
+			section
+				label(for='street') Street:
+				input(type='text',name='street')
+			section
+				label(for='city') City:
+				input(type='text',name='city')
+			section
+				label(for='state') State:
+				input(type='text',name='state')
+			section
+				label(for='zip') Zip:
+				input(type='text',name='zip')
+			section
+				label(for='country') Country:
+				input(type='text',name='country')
+		fieldset
+			legend Contact Preference
+			section
+				input(type='checkbox',name='cphone')
+				span Contact by phone
+			section
+				input(type='checkbox',name='cemail')
+				span Contact by email
+			section
+				input(type='checkbox',name='cmail')
+				span Contact by mail
+		button(type='submit') Add
+		if (message)
+			p #{message}
+				
+				

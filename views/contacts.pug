@@ -1,0 +1,62 @@
+extends layout.pug
+
+block content
+	head
+		meta(name="viewport", content="width=device=width,initial-scale=1")
+		script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+		link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC",crossorigin="anonymous")
+		link(href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css", rel="stylesheet")
+	h1 Places
+	.row
+		.container.col-sm.leftMargin
+			div#map                    		                          
+	h1 Contact List
+	.rightalign
+		a.button.link(href='/create') Create contact
+	table.table
+		thead
+			tr
+				th Name
+				th Phone
+				th Email
+				th Address
+				th Contact
+		tbody
+			each c in contact_list
+				tr
+					td: a.link(href="/"+c.contactId) #{c.title} #{c.fname} #{c.lname}
+					td #{c.phone}
+					td #{c.email}					
+					td: button.hidebutton(onclick='set_view("'+ c.latitude +'","'+ c.longitude +'")' ) #{c.address}
+					td 
+						section
+							if c.contact_by_phone						
+								input(type='checkbox',checked=true,disabled)
+							else
+								input(type='checkbox',checked=false,disabled)
+							br
+							span Phone
+						section
+							if c.contact_by_email
+								input(type='checkbox',checked=true,disabled)
+							else
+								input(type='checkbox',checked=false,disabled)
+							br
+							span Email
+						section
+							if c.contact_by_mail
+								input(type='checkbox',checked=true,disabled)
+							else
+								input(type='checkbox',checked=false,disabled)
+							br
+							span Mail  
+					td: a.link.center(href='/'+c.contactId+'/edit') Edit
+						br
+						br
+						a.link.center(href='/'+c.contactId+'/delete') Delete
+		script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js", integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM", crossorigin="anonymous")
+		script(src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js")
+		script(src="/places.js")
+		script.
+			loadPlaces()
+			loadMap()

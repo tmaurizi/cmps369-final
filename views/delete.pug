@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content
+	h1 Delete Contact
+	br
+	h2 #{contact.fname} #{contact.lname}
+	form(action='/'+contactId+'/delete', method='post')
+		p
+			span Are you sure you want to delete this contact?
+		p
+			button(type='submit') Yes!
+			a.link(href='/') Nevermind
