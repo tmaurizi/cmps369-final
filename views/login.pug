@@ -1,19 +1,20 @@
 extends layout.pug
 
 block content
-	h1 Sign in
-	if message
-			.loud
-				p #{message}
-	form(action='/login',method='post')
-		.box
-			label(for='username') Username
-			input(type='text',name='username')
-			label(for='password') Password
-			input(type='password',name='password')
-			br
-			button(type='submit') Sign in
-			a.link(href='/') Nevermind
-		p
-			span Don't have an account yet? 
-			a.link(href='/signup') Sign up here!
+	.margins
+		h1 Sign in
+		if message
+				.loud
+					p #{message}
+		form(action='/login',method='post')
+			.box
+				label(for='username') Username
+				input(type='text',name='username')
+				label(for='password') Password
+				input(type='password',name='password')
+				br
+				button(type='submit') Sign in
+				a.link(href='/') Nevermind
+			p
+				span Don't have an account yet? 
+				a.link(href='/signup') Sign up here!

@@ -1,90 +1,89 @@
 extends layout.pug
 
 block content
-	.header
-		h1 Edit Contact
-	a.button.rightalign.link(href='/') Back
-	form(action='/'+contactId+'/edit',method='post')
-		fieldset
-			legend Basic Info
-			section
-				label(for='fname') First Name:
-				input(type='text',name='fname',value=contact.fname)
-			section
-				label(for='lname') Last Name:
-				input(type='text',name='lname',value=contact.lname)
-			section
-				label(for='title') Title:
-				case contact.title
-					when 'Mr.'
-						select(id='title', name='title')
-							option(value='Mr.') Mr.
-							option(value='Mrs.') Mrs.
-							option(value='Ms.') Ms.
-							option(value='Dr.') Dr.
-					when 'Mrs.'
-						select(id='title', name='title')
-							option(value='Mrs.') Mrs.
-							option(value='Mr.') Mr.
-							option(value='Ms.') Ms.
-							option(value='Dr.') Dr.
-					when 'Ms.'
-						select(id='title', name='title')
-							option(value='Ms.') Ms.
-							option(value='Mr.') Mr.
-							option(value='Mrs.') Mrs.
-							option(value='Dr.') Dr.
-					when 'Dr.'
-						select(id='title', name='title')
-							option(value='Dr.') Dr.
-							option(value='Mr.') Mr.
-							option(value='Mrs.') Mrs.
-							option(value='Ms.') Ms.
-			section
-				label(for='phone') Phone:
-				input(type='text',name='phone',value=contact.phone)
-			section
-				label(for='email') Email:
-				input(type='text',name='email',value=contact.email)
-		fieldset
-			legend Address
-			section
-				label(for='street') Street:
-				input(type='text',name='street',value=street)
-			section
-				label(for='city') City:
-				input(type='text',name='city',value=city)
-			section
-				label(for='state') State:
-				input(type='text',name='state',value=state)
-			section
-				label(for='zip') Zip:
-				input(type='text',name='zip',value=zip)
-			section
-				label(for='country') Country:
-				input(type='text',name='country',value=country)
-		fieldset
-			legend Contact Preference
-			section
-				if contact.contact_by_phone
-					input(type='checkbox',checked=true,name='cphone')
-				else
-					input(type='checkbox',checked=false,name='cphone')
-				span Contact by phone
-			section
-				if contact.contact_by_email
-					input(type='checkbox',checked=true,name='cemail')
-				else
-					input(type='checkbox',checked=false,name='cemail')
-				span Contact by email
-			section
-				if contact.contact_by_mail
-					input(type='checkbox',checked=true,name='cmail')
-				else
-					input(type='checkbox',checked=false,name='cmail')
-				span Contact by mail
-		button(type='submit') Save
-		if (message)
-			p #{message}
-				
-				
+	.margins
+		.header
+			h1 Edit Contact
+		a.button.rightalign.link(href='/') Back
+		form(action='/'+contactId+'/edit',method='post')
+			fieldset
+				legend Basic Info
+				section
+					label(for='fname') First Name:
+					input(type='text',name='fname',value=contact.fname)
+				section
+					label(for='lname') Last Name:
+					input(type='text',name='lname',value=contact.lname)
+				section
+					label(for='title') Title:
+					case contact.title
+						when 'Mr.'
+							select(id='title', name='title')
+								option(value='Mr.') Mr.
+								option(value='Mrs.') Mrs.
+								option(value='Ms.') Ms.
+								option(value='Dr.') Dr.
+						when 'Mrs.'
+							select(id='title', name='title')
+								option(value='Mrs.') Mrs.
+								option(value='Mr.') Mr.
+								option(value='Ms.') Ms.
+								option(value='Dr.') Dr.
+						when 'Ms.'
+							select(id='title', name='title')
+								option(value='Ms.') Ms.
+								option(value='Mr.') Mr.
+								option(value='Mrs.') Mrs.
+								option(value='Dr.') Dr.
+						when 'Dr.'
+							select(id='title', name='title')
+								option(value='Dr.') Dr.
+								option(value='Mr.') Mr.
+								option(value='Mrs.') Mrs.
+								option(value='Ms.') Ms.
+				section	
+					label(for='phone') Phone:
+					input(type='text',name='phone',value=contact.phone)
+				section
+					label(for='email') Email:
+					input(type='text',name='email',value=contact.email)
+			fieldset
+				legend Address
+				section
+					label(for='street') Street:
+					input(type='text',name='street',value=street)
+				section
+					label(for='city') City:
+					input(type='text',name='city',value=city)
+				section
+					label(for='state') State:
+					input(type='text',name='state',value=state)
+				section
+					label(for='zip') Zip:
+					input(type='text',name='zip',value=zip)
+				section
+					label(for='country') Country:
+					input(type='text',name='country',value=country)
+			fieldset
+				legend Contact Preference
+				section
+					if contact.contact_by_phone
+						input(type='checkbox',checked=true,name='cphone')
+					else
+						input(type='checkbox',checked=false,name='cphone')
+					span Contact by phone
+				section
+					if contact.contact_by_email
+						input(type='checkbox',checked=true,name='cemail')
+					else
+						input(type='checkbox',checked=false,name='cemail')
+					span Contact by email
+				section
+					if contact.contact_by_mail
+						input(type='checkbox',checked=true,name='cmail')
+					else
+						input(type='checkbox',checked=false,name='cmail')
+					span Contact by mail
+			button(type='submit') Save
+			if (message)
+				p #{message}
