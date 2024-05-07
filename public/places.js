@@ -1,6 +1,7 @@
 var map;
 
-const set_view = async (lat, lng) => {    
+const set_view = async (lat, lng) => {
+    scrollTo(0, 75);
     map.flyTo([lat, lng], 13);
     await loadMap();
     await loadPlaces();
@@ -8,7 +9,6 @@ const set_view = async (lat, lng) => {
 
 const loadPlaces = async () => {  
     const response = await axios.get('/contacts');  
-    console.log(response.data.contacts);
     if (response && response.data && response.data.contacts) {
         for (const c of response.data.contacts) {            
             L.marker([c.latitude, c.longitude]).addTo(map).bindPopup('<b>' + c.fname + " " + c.lname + '</b><br>' + c.address).openPopup();
