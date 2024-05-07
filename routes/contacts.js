@@ -5,7 +5,12 @@ const geocoder = geo({ provider: 'openstreetmap' });
 
 router.get('/', async (req, res) => {  
     const contact_list = await req.db.findContactList();
-    res.render('contacts', { contact_list: contact_list });
+    if (contact_list) {
+        res.render('contacts', { contact_list: contact_list });
+    }
+    else {
+        res.render('create', {message: 'Please create a contact to continue'});
+    }
 });
 
 const logged_in = (req, res, next) => {
