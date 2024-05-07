@@ -44,6 +44,13 @@ input[type=password] {
     width: 50%;
 }
 
+input[type=email] {
+    border-radius: 12px;
+    border: solid #37639c;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    width: 50%;
+}
+
 h1 {
     font-size: 2rem;
 }
